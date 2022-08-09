@@ -27,11 +27,18 @@ class FirstDemoTests: XCTestCase {
     }
     
     func test_dictsAreEqual() {
-        let dict1 = ["id": "2", "names": "foo"]
+        let dict1 = ["id": "2", "name": "foo"]
         let dict2 = ["id": "2", "name": "foo"]
-        
+                
         //XCTAssertEqual(dict1, dict2)
         DDHAssertEqual(dict1, dict2)
+    }
+    
+    func test_keysAreEqual() {
+        let dict1 = ["id": "2", "name": "foo"]
+        let dict2 = ["id": "2", "name": "foo"]
+        
+        XCTAssertEqual(dict1.keys, dict2.keys)
     }
     
     func DDHAssertEqual<A: Equatable, B: Equatable>(_ first: [A:B], _ second: [A:B], file: StaticString = #filePath, line: UInt = #line) {
@@ -51,5 +58,7 @@ class FirstDemoTests: XCTestCase {
                 return
             }
         }
+        
+        XCTAssertEqual(first.keys, second.keys, file: file, line: line)
     }
 }
