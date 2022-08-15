@@ -10,12 +10,14 @@ import XCTest
 
 class FirstDemoTests: XCTestCase {
 
+    var blogger: Blogger!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        blogger = Blogger()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        blogger = nil
     }
 
     func test_numberOVowels_whenGivenDominik_shouldReturn3(){
@@ -60,5 +62,60 @@ class FirstDemoTests: XCTestCase {
         }
         
         XCTAssertEqual(first.keys, second.keys, file: file, line: line)
+    }
+    
+    
+    func test_makeHeadline_shouldCapitalisePassedInString() {
+        let input = "the Accessibility inspector"
+        
+        let result = blogger.makeHeadline(from: input)
+        
+        let expected = "The Accessibility Inspector"
+        XCTAssertEqual(result, expected)
+    }
+    
+    func test_makeHeadline_shouldCapitalisePassedInString_2() {
+        let input = "The contextual action menu"
+        
+        let result = blogger.makeHeadline(from: input)
+        
+        let expected = "The Contextual Action Menu"
+        XCTAssertEqual(result, expected)
+    }
+    
+    func test_makeReverseAString() {
+        let input = "hello"
+        
+        let result = blogger.makeReverseString(from: input)
+        
+        let expected = "olleh"
+        XCTAssertEqual(result, expected)
+    }
+    
+    func test_makeReverseAString_2() {
+        let input = "hello world"
+        
+        let result = blogger.makeReverseString(from: input)
+        
+        let expected = "dlrow olleh"
+        XCTAssertEqual(result, expected)
+    }
+    
+    func test_makeAFileNameFromAHeadline() {
+        let input = "jaime Leon"
+        
+        let result = blogger.makeFilename(from: input)
+        
+        let expected = "jaime_leon.txt"
+        XCTAssertEqual(result, expected)
+    }
+    
+    func test_makeAFileNameFromAHeadline_2() {
+        let input = "first Demo"
+        
+        let result = blogger.makeFilename(from: input)
+        
+        let expected = "first_demo.txt"
+        XCTAssertEqual(result, expected)
     }
 }
