@@ -20,13 +20,14 @@ class ToDoItemTests: XCTestCase {
     
     func test_init_whenGivenTitle_setsTitle(){
         let item = ToDoItem(title: "Dummy")
-        
+              
         XCTAssertEqual(item.title, "Dummy")
     }
     
     func test_init_takes_whenGivenDescription_setDescription(){
         let item = ToDoItem(title: "Dummy",
                             itemDescription: "Dummy Description")
+        
         XCTAssertEqual(item.itemDescription, "Dummy Description")
     }
     
@@ -35,7 +36,7 @@ class ToDoItemTests: XCTestCase {
         let item = ToDoItem(title: "Dummy", timestamp: dummyTimestamp)
         let timestamp = try XCTUnwrap(item.timestamp)
         
-        XCTAssertEqual(item.timestamp, dummyTimestamp)
+        XCTAssertEqual(item.timestamp, timestamp)
         XCTAssertEqual(timestamp, dummyTimestamp, accuracy: 0.000_001)
     }
     
