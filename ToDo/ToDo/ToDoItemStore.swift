@@ -8,13 +8,19 @@
 import Foundation
 import Combine
 
-class ToDoItemStore {
+protocol ToDoItemStoreProtocol{
+    var itemPublisher: CurrentValueSubject<[ToDoItem], Never> { get set}
+    func check(_: ToDoItem)
+}
+
+class ToDoItemStore : ToDoItemStoreProtocol {
     var itemPublisher = CurrentValueSubject<[ToDoItem], Never> ([])
     
     private let fileName: String
     private var items: [ToDoItem] = [] {
         didSet {
             itemPublisher.send(items)
+            saveItems()
         }
     }
     
@@ -25,7 +31,6 @@ class ToDoItemStore {
     
     func add(_ item: ToDoItem) {
         items.append(item)
-        saveItems()
     }
     
     func check(_ item: ToDoItem) {
@@ -34,23 +39,21 @@ class ToDoItemStore {
         
         if let index = items.firstIndex(of: item) {
             items[index] = mutableItem
-            saveItems()
         }
     }
     
     private func saveItems() {
-        let url = fileNameURL(name: fileName)
+        let url = fileNameURL(from: fileName)
         do {
             let data = try JSONEncoder().encode(items)
             try data.write(to: url)
         } catch {
             print("Error: \(error)")
         }
-        
     }
     
     private func loadItems() {
-        let url = fileNameURL(name: fileName)
+        let url = fileNameURL(from: fileName)
         do {
             let data = try Data(contentsOf: url)
             items = try JSONDecoder().decode([ToDoItem].self, from: data)
@@ -59,7 +62,7 @@ class ToDoItemStore {
         }
     }
     
-    private func fileNameURL(name: String) -> URL {
-        return FileManager.default.documentsURL(name: name)
+    private func fileNameURL(from: String) -> URL {
+        return FileManager.default.documentsURL(name: from)
     }
 }

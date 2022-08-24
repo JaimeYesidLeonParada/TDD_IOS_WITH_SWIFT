@@ -19,6 +19,12 @@
 		1C803D9828AC18CE005A12B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C803D9628AC18CE005A12B1 /* LaunchScreen.storyboard */; };
 		1C803DAD28AC18CE005A12B1 /* ToDoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C803DAC28AC18CE005A12B1 /* ToDoUITests.swift */; };
 		1C803DAF28AC18CF005A12B1 /* ToDoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C803DAE28AC18CF005A12B1 /* ToDoUITestsLaunchTests.swift */; };
+		1C9BCDD628B3F42D008C5EEE /* ToDoItemsListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9BCDD528B3F42D008C5EEE /* ToDoItemsListViewControllerTests.swift */; };
+		1C9BCDD828B3F4A1008C5EEE /* ToDoItemsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9BCDD728B3F4A1008C5EEE /* ToDoItemsListViewController.swift */; };
+		1C9BCDDA28B52F08008C5EEE /* ToDoItemStoreProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9BCDD928B52F08008C5EEE /* ToDoItemStoreProtocolMock.swift */; };
+		1C9BCDDC28B53B05008C5EEE /* ToDoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9BCDDB28B53B05008C5EEE /* ToDoItemCell.swift */; };
+		1C9BCDDE28B53E00008C5EEE /* ToDoItemCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9BCDDD28B53E00008C5EEE /* ToDoItemCellTests.swift */; };
+		1C9BCDE028B55A88008C5EEE /* ToDoItemsListViewControllerProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9BCDDF28B55A88008C5EEE /* ToDoItemsListViewControllerProtocolMock.swift */; };
 		1CB5811228AFDDB1002B7D20 /* ToDoItemStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5811128AFDDB1002B7D20 /* ToDoItemStoreTests.swift */; };
 		1CB5811428AFDE84002B7D20 /* ToDoItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5811328AFDE84002B7D20 /* ToDoItemStore.swift */; };
 		1CB5811628B14463002B7D20 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB5811528B14463002B7D20 /* Coordinate.swift */; };
@@ -59,6 +65,12 @@
 		1C803DA828AC18CE005A12B1 /* ToDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C803DAC28AC18CE005A12B1 /* ToDoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUITests.swift; sourceTree = "<group>"; };
 		1C803DAE28AC18CF005A12B1 /* ToDoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1C9BCDD528B3F42D008C5EEE /* ToDoItemsListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemsListViewControllerTests.swift; sourceTree = "<group>"; };
+		1C9BCDD728B3F4A1008C5EEE /* ToDoItemsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemsListViewController.swift; sourceTree = "<group>"; };
+		1C9BCDD928B52F08008C5EEE /* ToDoItemStoreProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemStoreProtocolMock.swift; sourceTree = "<group>"; };
+		1C9BCDDB28B53B05008C5EEE /* ToDoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemCell.swift; sourceTree = "<group>"; };
+		1C9BCDDD28B53E00008C5EEE /* ToDoItemCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemCellTests.swift; sourceTree = "<group>"; };
+		1C9BCDDF28B55A88008C5EEE /* ToDoItemsListViewControllerProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemsListViewControllerProtocolMock.swift; sourceTree = "<group>"; };
 		1CB5811128AFDDB1002B7D20 /* ToDoItemStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemStoreTests.swift; sourceTree = "<group>"; };
 		1CB5811328AFDE84002B7D20 /* ToDoItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemStore.swift; sourceTree = "<group>"; };
 		1CB5811528B14463002B7D20 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
@@ -125,6 +137,8 @@
 				1CB5811328AFDE84002B7D20 /* ToDoItemStore.swift */,
 				1CB5811528B14463002B7D20 /* Coordinate.swift */,
 				1CB5811728B14A6B002B7D20 /* FileManagerExtension.swift */,
+				1C9BCDD728B3F4A1008C5EEE /* ToDoItemsListViewController.swift */,
+				1C9BCDDB28B53B05008C5EEE /* ToDoItemCell.swift */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -135,6 +149,10 @@
 				1C2860A928AE850E00C9A60E /* ToDoItemTests.swift */,
 				1C2860AF28AEAC0100C9A60E /* LocationTests.swift */,
 				1CB5811128AFDDB1002B7D20 /* ToDoItemStoreTests.swift */,
+				1C9BCDD528B3F42D008C5EEE /* ToDoItemsListViewControllerTests.swift */,
+				1C9BCDD928B52F08008C5EEE /* ToDoItemStoreProtocolMock.swift */,
+				1C9BCDDD28B53E00008C5EEE /* ToDoItemCellTests.swift */,
+				1C9BCDDF28B55A88008C5EEE /* ToDoItemsListViewControllerProtocolMock.swift */,
 			);
 			path = ToDoTests;
 			sourceTree = "<group>";
@@ -285,6 +303,8 @@
 				1C2860AE28AEA2C000C9A60E /* Location.swift in Sources */,
 				1C2860AC28AE860300C9A60E /* ToDoItem.swift in Sources */,
 				1CB5811828B14A6B002B7D20 /* FileManagerExtension.swift in Sources */,
+				1C9BCDDC28B53B05008C5EEE /* ToDoItemCell.swift in Sources */,
+				1C9BCDD828B3F4A1008C5EEE /* ToDoItemsListViewController.swift in Sources */,
 				1CB5811428AFDE84002B7D20 /* ToDoItemStore.swift in Sources */,
 				1C803D8E28AC18CB005A12B1 /* SceneDelegate.swift in Sources */,
 			);
@@ -294,9 +314,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C9BCDE028B55A88008C5EEE /* ToDoItemsListViewControllerProtocolMock.swift in Sources */,
+				1C9BCDDE28B53E00008C5EEE /* ToDoItemCellTests.swift in Sources */,
 				1CB5811228AFDDB1002B7D20 /* ToDoItemStoreTests.swift in Sources */,
 				1C2860B028AEAC0100C9A60E /* LocationTests.swift in Sources */,
 				1C2860AA28AE850E00C9A60E /* ToDoItemTests.swift in Sources */,
+				1C9BCDDA28B52F08008C5EEE /* ToDoItemStoreProtocolMock.swift in Sources */,
+				1C9BCDD628B3F42D008C5EEE /* ToDoItemsListViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
