@@ -123,10 +123,7 @@ class ToDoItemInputViewTests: XCTestCase {
         let expected = "dummy address"
         toDoItemData.addressString = expected
         
-        try sut.inspect().find(ViewType.Button.self, where: { view in
-            let label = try view.labelView().text().string()
-            return label == "Save"
-        }).tap()
+        try sut.tapButtonWith(name: "Save")
         
         XCTAssertEqual(apiClientMock.coordinateAddress, expected)
     }
