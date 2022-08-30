@@ -157,5 +157,8 @@ class ToDoItemDetailsViewControllerTests: XCTestCase {
         
         XCTAssertTrue(sut.mapView.isHidden)
     }
-
+    
+    func test_dateFormatter_shouldNotBeNone() {
+        XCTAssertNotEqual(sut.dateFormatter.dateStyle, .none)
+    }
 }

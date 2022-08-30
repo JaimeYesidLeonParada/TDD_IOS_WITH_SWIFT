@@ -16,7 +16,12 @@ class ToDoItemDetailsViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var doneButton: UIButton!
     
-    var dateFormatter = DateFormatter()
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter
+    }()
+    
     var toDoItemStore: ToDoItemStoreProtocol?
     
     var toDoItem: ToDoItem? {
@@ -25,7 +30,7 @@ class ToDoItemDetailsViewController: UIViewController {
             descriptionLabel.text = toDoItem?.itemDescription
             locationLabel.text = toDoItem?.location?.name
             doneButton.isEnabled = (toDoItem?.done == false)
-                        
+                                    
             if let time = toDoItem?.timestamp {
                 dateLabel.text = dateFormatter.string(from: Date(timeIntervalSince1970: time))
             }

@@ -10,6 +10,7 @@ import Combine
 
 protocol ToDoItemsListViewControllerProtocol {
     func selectToDoItem(_ viewController: UIViewController, item: ToDoItem)
+    func addToDoItem(_ viewController: UIViewController)
 }
 
 class ToDoItemsListViewController: UIViewController {
@@ -49,6 +50,29 @@ class ToDoItemsListViewController: UIViewController {
             self?.items = items
             self?.update(with: items)
         })
+        
+        let addItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add(_:)))
+        navigationItem.rightBarButtonItem = addItem
+        
+        dateFormatter.dateStyle = .short
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        token = toDoItemStore?.itemPublisher.sink(receiveValue: { [weak self] items in
+            self?.items = items
+            self?.update(with: items)
+        })
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        token?.cancel()
+    }
+    
+    @objc func add(_ sender: UIBarButtonItem) {
+        delegate?.addToDoItem(self)
     }
     
     private func update(with items: [ToDoItem]) {
@@ -64,7 +88,17 @@ class ToDoItemsListViewController: UIViewController {
 
 extension ToDoItemsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = items[indexPath.row]
+        let item: ToDoItem
+        
+        switch indexPath.section {
+        case 0:
+            let filteredItems = items.filter({false == $0.done})
+            item = filteredItems[indexPath.row]
+        default:
+            let filteredItems = items.filter({ true == $0.done})
+            item = filteredItems[indexPath.row]
+        }
+        
         delegate?.selectToDoItem(self, item: item)
     }
 }

@@ -15,7 +15,7 @@ class ToDoItemsListViewControllerTests: XCTestCase {
     override func setUpWithError() throws {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         sut = try XCTUnwrap(
-            storyboard.instantiateInitialViewController() as? ToDoItemsListViewController
+            storyboard.instantiateViewController(identifier: "ToDoItemsListViewController") as? ToDoItemsListViewController
         )
         toDoItemStoreMock = ToDoItemStoreProtocolMock()
         sut.toDoItemStore = toDoItemStoreMock
@@ -112,8 +112,11 @@ class ToDoItemsListViewControllerTests: XCTestCase {
         let delegateMock = ToDoItemsListViewControllerProtocolMock()
         sut.delegate = delegateMock
         
-        let toDoItem = ToDoItem(title: "dummy 1")
-        toDoItemStoreMock.itemPublisher.send([toDoItem])
+        var doneItem = ToDoItem(title: "done item")
+        doneItem.done = true
+        
+        let toDoItem = ToDoItem(title: "to-do item")
+        toDoItemStoreMock.itemPublisher.send([doneItem, toDoItem])
         
         let tableView = try XCTUnwrap(sut.tableView)
         let indexPath = IndexPath(row: 0, section: 0)
@@ -121,5 +124,21 @@ class ToDoItemsListViewControllerTests: XCTestCase {
         tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
         
         XCTAssertEqual(delegateMock.selectToDoItemReceivedArguments?.item, toDoItem)
+    }
+    
+    func test_navigationBarButton_shouldCallDelegate() throws {
+        let delegateMock = ToDoItemsListViewControllerProtocolMock()
+        sut.delegate = delegateMock
+        
+        let addButton = sut.navigationItem.rightBarButtonItem
+        let target = try XCTUnwrap(addButton?.target)
+        let action = try XCTUnwrap(addButton?.action)
+        _ = target.perform(action, with: addButton)
+        
+        XCTAssertEqual(delegateMock.addToDoItemCallCount, 1)
+    }
+    
+    func test_dateFormatter_shouldNotBeNone() {
+        XCTAssertNotEqual(sut.dateFormatter.dateStyle, .none)
     }
 }
